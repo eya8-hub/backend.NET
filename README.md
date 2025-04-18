@@ -38,6 +38,7 @@ Le projet suit une **architecture en couches** avec séparation claire des respo
 - ASP.NET Core
 - Entity Framework Core
 - SQL Server
+- LINQ 
 
 
 ## 🚀 Setup du projet
