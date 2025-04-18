@@ -1,77 +1,135 @@
+# 🛠️ Leave Management API (.NET Core)
 
-# backend.NET
+**Leave Management API** est une application Web API développée avec **ASP.NET Core** qui permet de gérer les demandes de congés des employés. Elle offre une gestion complète : ajout, modification, suppression, approbation, filtrage, et reporting.
 
-Base de Données:
-1/Creer le dossier data pour  configuration de la bd qui contient "AppDBContext" puis ajouter les params dans "appsettings.json" et "program.cs"
-2/Lancer la cmd de migration pour la creation de la bd et les tables à partir des entités
-.dotnet ef migrations add InitialCreate
-.dotnet ef database update
+---
 
-3/Creer un employer dans sql server :
-INSERT INTO Employees (FullName, Department, JoiningDate)
-VALUES ('John Doe', 'Engineering', '2023-05-15');
+## 👩‍💻 Auteure
 
-Pour respecter l'architecture microservices j'ai adapté cette squelete pour mon projet :
-Ce projet est une API Web développée avec ASP.NET Core.
-L'architecture interne est structurée en différentes couches pour une meilleure séparation des responsabilités,
-incluant notamment un dossier "Controllers" pour la gestion des requêtes HTTP et un dossier "Repositories" suggérant l'implémentation du Repository Pattern pour l'abstraction de l'accès aux données.
-![image](https://github.com/user-attachments/assets/3a25b9fc-1adb-4d6d-9a47-17ab43a8e320)
+**Eya Mejri**  
+Développeuse .NET — passionnée par le clean code, les APIs REST et les architectures modulaires.  
+📧 [eya.mejri@esprit.tn](mailto:mejri.eya97@gmail.com)
 
-maintenant je vais commencer par:
+---
 
-l'api API AddRequest : ajouter demande
-![image](https://github.com/user-attachments/assets/f192a45e-0958-49e1-973a-1d8e9dc2e341)
+## 🧱 Architecture 
 
+Le projet suit une **architecture en couches** avec séparation claire des responsabilités :
 
-Api GET Request : Afficher tous 
-![image](https://github.com/user-attachments/assets/70bca482-2323-4bf3-ad5e-49145be4ccd2)
+- `Controllers` : gestion des requêtes HTTP.
+- `Services` : logique métier et règles de validation.
+- `Repositories` : accès aux données via Entity Framework Core.
+- `DTOs` : objets de transfert entre client ↔ serveur.
+- `Entities` : modèles de base de données.
+- `Data` : configuration du `DbContext`.
+- `Migrations` : migrations EF Core générées automatiquement.
 
+---
 
+## 🗂️ Structure du projet
 
-Api Get Request by ID  : afficher une demande 
-![image](https://github.com/user-attachments/assets/6875987d-22c2-4420-932d-3d3ddd8bcbd6)
-
-
-Api PUT Request : modifier une demande 
-![image](https://github.com/user-attachments/assets/49220f44-8dd5-4ece-9a80-501051e065fe)
-
-
-Api Delete Request : supprimer une demande
-![image](https://github.com/user-attachments/assets/01183063-ddfb-4b67-a82f-c2c5db94a8fa)
-
-
-API Filter : filtrer une demande et api métier 
-![image](https://github.com/user-attachments/assets/d79a2253-6af1-4be2-9133-f88cdcbe3867)
-![image](https://github.com/user-attachments/assets/d3b39e99-25d7-47dd-bb84-ccb91f29f8b0)
-![image](https://github.com/user-attachments/assets/3de83d95-4806-4d4e-b127-21c2888ffb70)
-LeaveType =0 annual , leaveType=1 Sick , leaveType=2 other 
-Status = 0 pending , status = 1 approved , status = 2 rejected 
+LeaveManagementAPI/
+ ├── Controllers/ 
+ ├── Data/
+ ├── DTOs/
+ ├── Entities/ 
+ ├── Migrations/ 
+ ├── Repositories/ 
+ ├── Services/
+ ├── appsettings.json 
+ ├── Program.cs 
+ └── README.md
 
 
-Api leaverequests : Rapport des demandes 
-![image](https://github.com/user-attachments/assets/b38109a1-6e82-4013-a072-564cf7d04167)
+ ## ⚙️ Technologies utilisées
+
+- ASP.NET Core
+- Entity Framework Core
+- SQL Server
+- Swagger (Swashbuckle)
+- LINQ, Async/Await
 
 
-Api approver les demandes avec le statut pending et si le statut est different on ne peux pas l'approver une autre fois 
+## 🚀 Setup du projet
 
-![image](https://github.com/user-attachments/assets/9ee63c59-7b67-4b97-a537-02171de6cec4)
-
-![image](https://github.com/user-attachments/assets/fac95545-87af-45de-81d4-07db0441ca2a)
+### 1. Cloner le dépôt
 
 
+git clone https://github.com/eya-mejri/LeaveManagementAPI.git
+cd LeaveManagementAPI
 
 
 
+### 2. Restaurer les packages NuGet
+dotnet restore
+
+
+### 3. Configurer la base de données
+Vérifie ou modifie ta chaîne de connexion dans appsettings.json :
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=LeaveManagementDB;Trusted_Connection=True;"
+}
+
+
+### 4. Créer la base de données avec EF Core
+dotnet ef migrations add InitialCreate
+dotnet ef database update
 
 
 
+###  5. Démarrer le projet
+dotnet run
 
 
+# 📚 Documentation API
+https://localhost:{port}/
+🔌 Endpoints API
 
 
+### ➕ Ajouter une demande
+POST /api/leaverequests
 
 
+### 📋 Lister toutes les demandes
+GET /api/leaverequests
 
 
+### 🔍 Récupérer une demande par ID
+GET /api/leaverequests/{id}
 
+
+### ✏️ Modifier une demande
+PUT /api/leaverequests/{id}
+
+
+### ❌ Supprimer une demande
+DELETE /api/leaverequests/{id}
+
+
+### 🔎 Filtrer les demandes
+GET /api/leaverequests/filter?employeeId=&leaveType=&status=
+
+
+### 📊 Rapport global des demandes
+GET /api/leaverequests/report
+
+
+### ✔️ Approuver une demande
+PUT /api/leaverequests/approve/{id}
+
+
+## 📘 Règles métier
+### LeaveType
+0 : Congé annuel
+
+1 : Congé maladie
+
+2 : Autre
+
+### Status
+0 : En attente (Pending)
+
+1 : Approuvé (Approved)
+
+2 : Rejeté (Rejected)
 
