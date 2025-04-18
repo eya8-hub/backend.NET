@@ -104,8 +104,11 @@ DELETE /api/leaverequests/{id}
 
 
 ### 🔎 Filtrer les demandes
-GET /api/leaverequests/filter?employeeId=&leaveType=&status=
+GET /api/leaverequests/filter?employeeId=1&leaveType=1&sortBy=StartDate&sortOrder=desc&page=1&pageSize=2&keyword=pers)
 ![image](https://github.com/user-attachments/assets/f441d810-605b-436a-a98e-bcf830d5c640)
+Partie metier : ne dépasse pas 20 jours 
+![image](https://github.com/user-attachments/assets/8d1c57f3-2e3f-4c1a-a777-1ce122c22d0e)
+
 
 
 ### 📊 Rapport global des demandes
