@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eya MEJRI\\source\\repos\\Assesment - Copie\\TechnicalAssesments\\TechnicalAssesments.API.csproj": {}
+    "C:\\Users\\Eya MEJRI\\source\\repos\\backend.NET\\TechnicalAssesments\\TechnicalAssesments.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eya MEJRI\\source\\repos\\Assesment - Copie\\TechnicalAssesments\\TechnicalAssesments.API.csproj": {
+    "C:\\Users\\Eya MEJRI\\source\\repos\\backend.NET\\TechnicalAssesments\\TechnicalAssesments.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eya MEJRI\\source\\repos\\Assesment - Copie\\TechnicalAssesments\\TechnicalAssesments.API.csproj",
+        "projectUniqueName": "C:\\Users\\Eya MEJRI\\source\\repos\\backend.NET\\TechnicalAssesments\\TechnicalAssesments.API.csproj",
         "projectName": "TechnicalAssesments.API",
-        "projectPath": "C:\\Users\\Eya MEJRI\\source\\repos\\Assesment - Copie\\TechnicalAssesments\\TechnicalAssesments.API.csproj",
+        "projectPath": "C:\\Users\\Eya MEJRI\\source\\repos\\backend.NET\\TechnicalAssesments\\TechnicalAssesments.API.csproj",
         "packagesPath": "C:\\Users\\Eya MEJRI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eya MEJRI\\source\\repos\\Assesment - Copie\\TechnicalAssesments\\obj\\",
+        "outputPath": "C:\\Users\\Eya MEJRI\\source\\repos\\backend.NET\\TechnicalAssesments\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

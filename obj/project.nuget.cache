@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qxgT1WdOsfU=",
+  "dgSpecHash": "krpOZROjRPs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Eya MEJRI\\source\\repos\\Assesment - Copie\\TechnicalAssesments\\TechnicalAssesments.API.csproj",
+  "projectFilePath": "C:\\Users\\Eya MEJRI\\source\\repos\\backend.NET\\TechnicalAssesments\\TechnicalAssesments.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eya MEJRI\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Eya MEJRI\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

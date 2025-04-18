@@ -43,10 +43,25 @@ namespace TechnicalAssesments.API.Controllers
             return leaveRequest;
         }
 
-        // ✅ POST a new leave request
+
         [HttpPost(Name = "CreateLeaveRequest")]
         public async Task<ActionResult<LeaveRequest>> PostLeaveRequest(CreateLeaveRequestDTO dto)
         {
+            // ✅ Vérifie s'il existe une autre demande qui chevauche cette période
+            bool hasOverlap = await _context.LeaveRequest
+                .AnyAsync(l =>
+                    l.EmployeeId == dto.EmployeeId &&
+                    l.Status != LeaveStatus.Rejected && // Ignorer les demandes refusées
+                    l.StartDate <= dto.EndDate &&
+                    l.EndDate >= dto.StartDate
+                );
+
+            if (hasOverlap)
+            {
+                return BadRequest("L'employé a déjà une demande de congé pendant cette période.");
+            }
+
+            // ✅ Création de la demande
             var leaveRequest = new LeaveRequest
             {
                 EmployeeId = dto.EmployeeId,
@@ -64,6 +79,30 @@ namespace TechnicalAssesments.API.Controllers
             return CreatedAtRoute("GetLeaveRequestById", new { id = leaveRequest.Id }, leaveRequest);
         }
 
+
+
+
+        // ✅ POST a new leave request
+        //[HttpPost(Name = "CreateLeaveRequest")]
+        /*        public async Task<ActionResult<LeaveRequest>> PostLeaveRequest(CreateLeaveRequestDTO dto)
+                {
+                    var leaveRequest = new LeaveRequest
+                    {
+                        EmployeeId = dto.EmployeeId,
+                        LeaveType = Enum.Parse<LeaveType>(dto.LeaveType),
+                        StartDate = dto.StartDate,
+                        EndDate = dto.EndDate,
+                        Reason = dto.Reason,
+                        CreatedAt = DateTime.UtcNow,
+                        Status = LeaveStatus.Pending
+                    };
+
+                    _context.LeaveRequest.Add(leaveRequest);
+                    await _context.SaveChangesAsync();
+
+                    return CreatedAtRoute("GetLeaveRequestById", new { id = leaveRequest.Id }, leaveRequest);
+                }
+        */
 
         // ✅ PUT to update a leave request
         [HttpPut("{id}", Name = "UpdateLeaveRequest")]
@@ -246,10 +285,10 @@ namespace TechnicalAssesments.API.Controllers
         {
             var leaveRequest = await _context.LeaveRequest.FindAsync(id);
             if (leaveRequest == null)
-                return NotFound();
+                return Ok(new { message = "request doesn't exist" });
 
             if (leaveRequest.Status != LeaveStatus.Pending)
-                return BadRequest(new { message = "Only pending requests can be approved." });
+                return Ok(new { message = "Only pending requests can be approved." });
 
             leaveRequest.Status = LeaveStatus.Approved;
             await _context.SaveChangesAsync();
