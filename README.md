@@ -28,17 +28,9 @@ Le projet suit une **architecture en couches** avec séparation claire des respo
 
 ## 🗂️ Structure du projet
 
-LeaveManagementAPI/
- ├── Controllers/ 
- ├── Data/
- ├── DTOs/
- ├── Entities/ 
- ├── Migrations/ 
- ├── Repositories/ 
- ├── Services/
- ├── appsettings.json 
- ├── Program.cs 
- └── README.md
+
+![image](https://github.com/user-attachments/assets/11c1e0b4-7297-479e-a7aa-496571171354)
+
 
 
  ## ⚙️ Technologies utilisées
@@ -46,8 +38,6 @@ LeaveManagementAPI/
 - ASP.NET Core
 - Entity Framework Core
 - SQL Server
-- Swagger (Swashbuckle)
-- LINQ, Async/Await
 
 
 ## 🚀 Setup du projet
@@ -88,6 +78,9 @@ https://localhost:{port}/
 
 ### ➕ Ajouter une demande
 POST /api/leaverequests
+![image](https://github.com/user-attachments/assets/3591af2c-55f3-47d7-8f1b-f77ceb5f5187)
+partie metier ne peux pas ajouter deux date au mm temps
+![image](https://github.com/user-attachments/assets/09bba086-a220-4fed-ac97-90dbc276e0a7)
 
 
 ### 📋 Lister toutes les demandes
