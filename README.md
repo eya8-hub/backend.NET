@@ -107,6 +107,9 @@ DELETE /api/leaverequests/{id}
 GET /api/leaverequests/filter?employeeId=&leaveType=&status=
 ![image](https://github.com/user-attachments/assets/f441d810-605b-436a-a98e-bcf830d5c640)
 
+les demandes ne dépassent pas 20 jours 
+![image](https://github.com/user-attachments/assets/0b7db076-8eb8-4022-b33e-f56c915642df)
+
 
 ### 📊 Rapport global des demandes
 GET /api/leaverequests/report
